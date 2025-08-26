@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>360 Image Viewer</title>
+    <script src="assets/libs/aframe.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="vr-container-wrapper">
+        <div class="vr-container">
+            <div class="vr-sidebar collapsed">
+                <div class="vr-header">表示リスト</div>
+                <ul id="image-list" class="vr-file-list"></ul>
+                <button class="sidebar-toggle-button">▶</button>
+            </div>
+            <div class="vr-viewer">
+                <a-scene embedded vr-mode-ui="enabled: false">
+                    <a-assets>
+                        <img id="arrow-img" src="icon/hltr1.png">
+                    </a-assets>
+                    <a-camera look-controls-enabled="false" wasd-controls-enabled="false" camera-zoom>
+                        <a-cursor></a-cursor>
+                    </a-camera>
+                    <a-sky id="sky-image" src="" color="#ECECEC"></a-sky>
+                    <a-entity id="orientation-hud">
+                        <a-ring position="0 1 0" rotation="-90 0 0" radius-inner="2.41" radius-outer="2.59" material="color: white; opacity: 0.7;"></a-ring>
+                        <a-image src="#arrow-img" position="0 1 -2.4" rotation="0 0 0" width="0.5" height="0.5" transparent="true"></a-image>
+                        <a-image src="#arrow-img" position="1.7 1 -1.7" rotation="0 -45 0" width="0.5" height="0.5" transparent="true"></a-image>
+                        <a-image src="#arrow-img" position="2.4 1 0" rotation="0 -90 0" width="0.5" height="0.5" transparent="true"></a-image>
+                        <a-image src="#arrow-img" position="1.7 1 1.7" rotation="0 -135 0" width="0.5" height="0.5" transparent="true"></a-image>
+                        <a-image src="#arrow-img" position="0 1 2.4" rotation="0 180 0" width="0.5" height="0.5" transparent="true"></a-image>
+                        <a-image src="#arrow-img" position="-1.7 1 1.7" rotation="0 135 0" width="0.5" height="0.5" transparent="true"></a-image>
+                        <a-image src="#arrow-img" position="-2.4 1 0" rotation="0 90 0" width="0.5" height="0.5" transparent="true"></a-image>
+                        <a-image src="#arrow-img" position="-1.7 1 -1.7" rotation="0 45 0" width="0.5" height="0.5" transparent="true"></a-image>
+                    </a-entity>
+                </a-scene>
+                
+                <div id="swipe-guide" class="swipe-guide">👆</div>
+
+                <div id="image-title-display" class="image-title-display"></div>
+
+                <button id="info-button" class="info-button">ここは何？</button>
+                <div id="info-panel" class="info-panel collapsed">
+                    <button id="info-panel-close-btn" class="info-panel-close-btn">&times;</button>
+                    <h3 id="info-title"></h3>
+                    <p id="info-description"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/camera-controls.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>
