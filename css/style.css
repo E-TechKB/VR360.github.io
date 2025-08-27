@@ -242,3 +242,8 @@ body {
     white-space: nowrap;
     text-shadow: none;
 }
+
+/* VRモードアイコンを強制的に非表示にする */
+.a-enter-vr {
+    display: none !important;
+}
